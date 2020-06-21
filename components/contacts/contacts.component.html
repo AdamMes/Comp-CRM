@@ -1,0 +1,48 @@
+<app-page-header
+  [headerTitle]="headerTitle"
+  [headerIcon]="headerIcon"
+  [headerDescription]="headerDescription"
+></app-page-header>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <h3>Company Employees Contact Table</h3>
+    <table
+      *ngIf="contacts.length > 0; else noContacts"
+      class="table table-bordered mt-3"
+    >
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Birthday</th>
+          <th>Phones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts">
+          <td>
+            <img
+              class="mr-3"
+              width="50"
+              src="assets/images/{{ contact.avatar }}"
+              alt=""
+            />
+            {{ contact.name | titlecase }}
+          </td>
+          <td>{{ contact.email | lowercase }}</td>
+          <td>{{ contact.birthday | date: "dd/MM/yyyy" }}</td>
+          <td>
+            <ul *ngIf="contact.phones.length > 0">
+              <li *ngFor="let phone of contact.phones">{{ phone }}</li>
+            </ul>
+            <p *ngIf="contact.phones.length == 0" class="ml-4">No phones ...</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noContacts>
+      <p><i>No Contacts Available</i></p>
+    </ng-template>
+  </div>
+</div>
