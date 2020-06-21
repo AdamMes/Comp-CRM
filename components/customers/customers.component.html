@@ -1,0 +1,56 @@
+<app-page-header [headerTitle]="headerTitle" [headerIcon]="headerIcon" [headerDescription]="headerDescription">
+</app-page-header>
+
+<div class="row mb-5">
+  <div class="col-8">
+    <input (input)="onInputTerm()" [(ngModel)]="term" class="form-control" type="text" name="term" id="term"
+      placeholder="Search Customer By Phone" />
+  </div>
+  <div class="col-4 ">
+    <a class="btn btn-primary float-right" href="" routerLink="/customers/new">
+      <i class="fas fa-plus-circle mr-1"></i>Add New Customer
+    </a>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <table *ngIf="customers; else noCustomers" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#NO.</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers; let x = index">
+          <td>
+            {{ x + 1 }}
+            <a href="" class="ml-3" routerLink="/customer/{{ customer.id }}/edit">
+              <i class="fas fa-pen text-success"></i>
+            </a>
+            <a href="" class="ml-3" (click)="
+                onDeleteCustomer(customer.id, customer.firstName, $event)
+              ">
+              <i class="fas fa-trash-alt text-danger"></i>
+            </a>
+          </td>
+          <td>
+            <a href="" routerLink="/customer/{{ customer.id }}">{{
+              customer.firstName
+            }}</a>
+          </td>
+          <td>{{ customer.lastName }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.phone }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noCustomers>
+      <p><i>No customers...</i></p>
+    </ng-template>
+  </div>
+</div>
