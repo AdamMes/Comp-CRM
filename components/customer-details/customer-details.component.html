@@ -1,0 +1,44 @@
+<app-page-header [headerTitle]="headerTitle" [headerIcon]="headerIcon" [headerDescription]="headerDescription">
+</app-page-header>
+
+<div class="row">
+  <div class="col-12">
+    <p>
+      <a href="" class="btn btn-secondary" routerLink="/customers">
+        <i class="fas fa-arrow-alt-circle-left  mr-2"></i>Back
+      </a>
+    </p>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td><b>First Name</b></td>
+          <td>{{ customer.firstName }}</td>
+        </tr>
+        <tr>
+          <td><b>Last Name</b></td>
+          <td>{{ customer.lastName }}</td>
+        </tr>
+        <tr>
+          <td><b>Email</b></td>
+          <td>{{ customer.email }}</td>
+        </tr>
+        <tr>
+          <td><b>Phone</b></td>
+          <td>{{ customer.phone }}</td>
+        </tr>
+        <tr>
+          <td><b>Country</b></td>
+          <td>{{ customer.country }}</td>
+        </tr>
+        <tr>
+          <td><b>Address</b></td>
+          <td>{{ customer.address }}</td>
+        </tr>
+        <tr>
+          <td><b>Notes</b></td>
+          <td>{{ customer.notes }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
